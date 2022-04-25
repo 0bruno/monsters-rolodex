@@ -12,6 +12,15 @@ class App extends Component {
     };
   }
 
+  //criando a função para evitar que toda hora que renderizar ela seja criada para o evento
+  //assim cria uma unica vez.
+  onSearchChange = (event) => {
+    const searchFieldMonsters = event.target.value.toLowerCase();
+    this.setState(() => {
+      return { searchFieldMonsters };
+    });
+  };
+
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users').then((response) =>
       response.json().then((users) =>
@@ -25,10 +34,12 @@ class App extends Component {
     );
   }
   render() {
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name
-        .toLowerCase()
-        .includes(this.state.searchFieldMonsters);
+    //optmizations destructuring
+    const { monsters, searchFieldMonsters } = this.state;
+    const { onSearchChange } = this;
+
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLowerCase().includes(searchFieldMonsters);
     });
 
     return (
@@ -37,12 +48,7 @@ class App extends Component {
           className="search-box"
           type="search"
           placeholder="search monsters"
-          onChange={(event) => {
-            const searchFieldMonsters = event.target.value.toLowerCase();
-            this.setState(() => {
-              return { searchFieldMonsters };
-            });
-          }}
+          onChange={onSearchChange}
         ></input>
         {filteredMonsters.map((monster) => {
           return (
