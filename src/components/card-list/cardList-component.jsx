@@ -2,7 +2,16 @@ import { Component } from 'react';
 
 class CardList extends Component {
   render() {
-    return <div>OI</div>;
+    console.log('Render component');
+    //destructuring props
+    const { monsters } = this.props;
+    return (
+      <div>
+        {monsters.map((monsters) => (
+          <h1 key={monsters.id}>{monsters.name}</h1>
+        ))}
+      </div>
+    );
   }
 }
 
