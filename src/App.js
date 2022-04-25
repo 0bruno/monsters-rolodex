@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import './App.css';
+import CardList from './components/card-list/cardList-component';
 
 class App extends Component {
   constructor() {
@@ -57,6 +58,8 @@ class App extends Component {
             </div>
           );
         })}
+
+        <CardList></CardList>
       </div>
     );
   }
