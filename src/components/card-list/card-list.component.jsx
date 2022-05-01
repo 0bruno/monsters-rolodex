@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import './card-list.styles.css';
 
 class CardList extends Component {
   render() {
@@ -10,6 +11,7 @@ class CardList extends Component {
         {monsters.map((monsters) => {
           const { name, id, email } = monsters;
           return (
+            //migrar isso para um componente cardComponent
             <div className="card-container">
               <img
                 alt={`monster${name}`}
