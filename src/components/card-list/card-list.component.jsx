@@ -7,9 +7,19 @@ class CardList extends Component {
     const { monsters } = this.props;
     return (
       <div>
-        {monsters.map((monsters) => (
-          <h1 key={monsters.id}>{monsters.name}</h1>
-        ))}
+        {monsters.map((monsters) => {
+          const { name, id, email } = monsters;
+          return (
+            <div>
+              <img
+                alt={`monster${name}`}
+                src={`https://robohash.org/${id}?set=set2&size=180x180`}
+              ></img>
+              <h2>{name}</h2>
+              <p>{email}</p>
+            </div>
+          );
+        })}
       </div>
     );
   }
