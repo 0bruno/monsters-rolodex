@@ -6,11 +6,11 @@ class CardList extends Component {
     //destructuring props
     const { monsters } = this.props;
     return (
-      <div>
+      <div className="card-list">
         {monsters.map((monsters) => {
           const { name, id, email } = monsters;
           return (
-            <div>
+            <div className="card-container">
               <img
                 alt={`monster${name}`}
                 src={`https://robohash.org/${id}?set=set2&size=180x180`}
