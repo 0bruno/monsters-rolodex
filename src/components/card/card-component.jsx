@@ -1,6 +1,19 @@
-import { Component } from 'react';
 import './card.styles.css';
 
+export default function Card({ name, id, email }) {
+  return (
+    <div className="card-container" key={id}>
+      <img
+        alt={`monster${name}`}
+        src={`https://robohash.org/${id}?set=set2&size=180x180`}
+      ></img>
+      <h2>{name}</h2>
+      <p>{email}</p>
+    </div>
+  );
+}
+
+/*
 class Card extends Component {
   render() {
     const { name, id, email } = this.props.monster;
@@ -17,4 +30,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default Card;*/
